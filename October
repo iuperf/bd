@@ -1,0 +1,54 @@
+--1.Создать таблицу Students, в которую добавить 2 столбца
+--name_student text, scores integar[]
+Create TABLE students
+(
+ Name_students text,
+ scores integer[]
+ 
+):
+insert into students (abc,daa)
+values 
+--2.Вставить в таблицу Students 2 произвольных строки 
+values 
+ ( 'Иван Иванов', '{ 1, 3, 5, 6, 7 }'::integer[] ), 
+( 'Иванова Катя', '{ 1, 2, 5, 7 }'::integer[] ); 
+select * from students 
+--3. Получить из таблицы Students данные, где name_student равно 'Иванов Иван'. 
+delete from students 
+select * from students WHERE  scores [1]='4'; 
+--4.Изменить оценки студента 'Иванов Иван' на 5, 5, 5, 5, 5. 
+Update students  
+Set scores [1]=5, scores [3]=5, scores [6]=5, scores [7]=5 
+WHERE name_students='Иван Иванов';
+--5.Удалить студента
+delete from students
+where scores[2] = 5;
+
+--6. Добавить в таблицу students столбец subjects c типом text[]
+alter table students add subjects text[]
+select * from students
+--7. Записать для студента (-ов) набор из 3-х дисциплин (Русский язык, История, 
+--Информатика)
+insert into students (name_students, scores, subjects)
+values 
+('Иванов Иван', '{ 4, 3, 5, 5, 5 }', 
+ '{Русский язык, История, Информатика}');
+ 
+--8. Обновить список дисциплин, заменив Историю на Математику
+UPDATE students
+SET subjects[1]= 'Русский язык',subjects[2]= 'Математика',
+subjects[3]= 'Информатика' where name_students = 'Иванова Катя';
+--9. Получить все данные о студенте (-х) по одной или всем дисциплинам
+UPDATE students
+SET subjects[1]= 'Русский язык',subjects[2]= 'Математика',
+subjects[3]= 'Информатика'
+where scores[1] = 4;
+--10. Вывести студентов, у которых есть в оценках 4-ки и 5-ки. 
+SELECT * FROM students
+WHERE scores @> '{ 4, 5 }' ;
+--11. Вывести студентов, которые изучают русский язык. 
+SELECT * FROM students
+WHERE subjects @> '{ Русский язык }';
+
+select * into copy_students from students;
+--бэкап таблицы
