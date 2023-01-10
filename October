@@ -34,6 +34,73 @@ values
 ('Иванов Иван', '{ 4, 3, 5, 5, 5 }', 
  '{Русский язык, История, Информатика}');
  
+ 
+ 
+ 
+ 
+ 
+ create table departure
+(time_dep timestamp, city text, num_arrive text);
+
+CREATE TABLE product_in_msk
+(_name text, brand text, name_company text, adress text, sale text)
+INSERT into product_in_msk 
+VALUES ('Chocolate', 'Noirla', 'Monetka', 'Myasnitskaya 147', 200),
+SELECT discount FROM discount WHERE discount > 0.1  
+SELECT discount FROM discount IF brand = 'Искра' WHERE discount > 30
+
+
+IF quantity
+THEN
+SELECT discount FROM discount WHERE discount > 0.1
+END IF;
+
+Select surname, name_, title, date_of_birth,name_company, address
+from worker join firm on worker.code_firm=firm.code_name
+where city in ('Москва','омск') and title in 'менеджер'
+order by name_company ask
+order by date_of_birth desk
+
+
+CREATE TABLE large_sale
+(_name text, brand text, employee text, DandT timestamp, quantity text)
+SELECT quantity FROM quantity WHERE quantity > 15
+IF brand = 'Искра' 
+THEN
+SELECT quantity FROM quantity WHERE quantity > 30
+END IF;               
+
+insert into Large_sale values
+('2022-12-03 10:45:00 1:00', 'Москва', 'DP_467')
+
+insert into departure values
+('2022-12-03 10:45:00 1:00', 'Москва', 'DP_467'),
+('', 'Москва', 'SU_1356'),
+('', 'Москва', 'S7_1237'),
+('', 'Москва', 'FV_6491'),
+('', 'Москва', 'DP_477'),
+('', 'Санкт-Петербург', 'DP_577'),
+('', 'Москва', 'FV_6489'),
+('', 'Москва', 'DP_475');
+
+create table arrival
+(time_arr timestamp, city text, num_arrive text);
+
+insert into arrival values
+('', 'Москва', 'DP_467'),
+(, 'Москва', 'SU_1356'),
+(, 'Москва', 'S7_1237'),
+(, 'Москва', 'FV_6491'),
+(, 'Москва', 'DP_477'),
+(, 'Санкт-Петербург', 'DP_577'),
+(, 'Москва', 'FV_6489'),
+(, 'Москва', 'DP_475');
+
+
+
+
+
+ 
 --8. Обновить список дисциплин, заменив Историю на Математику
 UPDATE students
 SET subjects[1]= 'Русский язык',subjects[2]= 'Математика',
